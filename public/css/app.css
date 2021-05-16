@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.logo-text {
+    text-align: center;
+    padding: 15px;
+}
+
+.containers-main {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.container-main {
+    padding: 10px;
+    grid-column: span;
+}
+
+.container-img{
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    background-image: url(/imgs/tenor.gif);
+}
+
+.containers-header {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.containers-header a {
+    text-decoration: none;
+    color: #51ff0d;
+}
+
+.center-h1 {
+    text-align: center;
+}
+
+.header-btns-log {
+    position: absolute;
+    right: 30px;
+}
+
+.header-btns-main {
+    left: 30px;
+}
+
+.containers-reg-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.btn-huge {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 101;
+    border: green solid;
+    background-color: #1a202c;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #51ff0d;
+}
+
+.borders-left-right {
+    border-left: green solid;
+    border-right: green solid;
+}
+
+.is-invalid {
+    border: 1px red solid;
+}
+
+
+
