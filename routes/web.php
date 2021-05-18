@@ -17,12 +17,16 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth')->name('profile');
+
 /* Авторизация */
 
-Route::get('/signup', [\App\Http\Controllers\AuthController::class, 'getSignup'])->name('auth.signup');
-Route::post('/signup', [\App\Http\Controllers\AuthController::class, 'postSignup']);
+Route::get('/signup', [\App\Http\Controllers\AuthController::class, 'getSignup'])->middleware('guest')->name('auth.signup');
+Route::post('/signup', [\App\Http\Controllers\AuthController::class, 'postSignup'])->middleware('guest');
 
-Route::get('/signin', [\App\Http\Controllers\AuthController::class, 'getSignin'])->name('auth.signin');
-Route::post('/signin', [\App\Http\Controllers\AuthController::class, 'postSignin']);
+Route::get('/signin', [\App\Http\Controllers\AuthController::class, 'getSignin'])->middleware('guest')->name('auth.signin');
+Route::post('/signin', [\App\Http\Controllers\AuthController::class, 'postSignin'])->middleware('guest');
 
-Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth')->name('auth.logout');

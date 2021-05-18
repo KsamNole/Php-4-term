@@ -16,7 +16,7 @@
         <img src="imgs/logo.jpg" style="width: 20px; height: 20px; padding-left: 5px;">
         <div class="header-btns-main">
             <a href="{{ route('home') }}">Главная</a>
-            <a href="">Профиль</a>
+            <a href="{{ route('profile') }}">Профиль</a>
         </div>
         <div class="header-btns-log">
             @if (Auth::check())
