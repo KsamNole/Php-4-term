@@ -22,7 +22,7 @@
     position: sticky;
     top: 0;
     min-height: 100vh;
-    background-image: url(/imgs/tenor.gif);
+    background-image: url('/imgs/tenor.gif');
 }
 
 .containers-header {
@@ -54,6 +54,39 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+}
+
+.background-morph-img {
+    position: relative;
+    width: 100%;
+}
+
+.morh-signin {
+    position: absolute;
+    bottom: 13%;
+    left: 23%;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    border: 2px solid darkcyan;
+    background-color: blue;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.morh-signup {
+    position: absolute;
+    bottom: 13%;
+    right: 23%;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    border: 2px solid darkgoldenrod;
+    background-color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
 }
 
 .btn-huge {

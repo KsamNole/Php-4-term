@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getUsername()
+    {
+        if ($this->username) {
+            return "{$this->username}";
+        }
+        return null;
+    }
 }

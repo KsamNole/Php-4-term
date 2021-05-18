@@ -19,8 +19,12 @@
             <a href="">Профиль</a>
         </div>
         <div class="header-btns-log">
+            @if (Auth::check())
+            <a href="{{ route('auth.logout') }}">Выйти</a>
+            @else
+            <a href="{{ route('auth.signin') }}">Войти</a>
             <a href="{{ route('auth.signup') }}">Зарегистрироваться</a>
-            <a href="">Выйти</a>
+            @endif
         </div>
     </ul>
 </header>
@@ -42,6 +46,5 @@
         <div class="container-img"></div>
     </div>
 </main>
-
 </body>
 </html>
