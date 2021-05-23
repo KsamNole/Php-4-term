@@ -106,7 +106,29 @@
 }
 
 .post {
-    border: 3px solid #a0aec0;
+    border: 1px solid #4a5568;
+}
+
+.text-area-post {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: black;
+    resize: none;
+    color: #51ff0d;
+}
+
+.input-comment {
+    width: 100%;
+    height: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background-color: black;
+    resize: none;
+    color: #51ff0d;
 }
 
 header {
