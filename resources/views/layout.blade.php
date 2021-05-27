@@ -17,6 +17,7 @@
         <div class="header-btns-main">
             <a href="{{ route('home') }}">Главная</a>
             <a href="{{ route('profile') }}">Профиль</a>
+            <a href="{{ route('messages') }}">Сообщения</a>
         </div>
         <div class="header-btns-log">
             @if (Auth::check())
