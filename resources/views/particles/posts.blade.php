@@ -9,13 +9,13 @@
                 <a style="text-decoration: none; color: white;" href="{{ route('dislike', $post->id) }}">/
                     0: {{ $post->dislikes }}</a></p>
             <hr size="1px;">
-            <form method="POST" action="{{ route('addComment') }}" id="comment">
+            <form method="POST" action="{{ route('addComment') }}" id="addСomment">
                 @csrf
                 <input class="input-comment" type="text" id="text" name="text">
                 <input type="hidden" id="id_post" name="id_post" value="{{ $post->id }}">
             </form>
             <script>
-                document.getElementById('comment').addEventListener('keydown', function(e){
+                document.getElementById('addСomment').addEventListener('keydown', function(e){
                     if (e.keyCode == 13) {
                         this.submit();
                     }

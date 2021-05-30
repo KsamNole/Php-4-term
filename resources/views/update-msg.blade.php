@@ -1,5 +1,5 @@
 @foreach($messages as $message)
-    <a style="text-decoration: none; color: #51ff0d;" href="">
+    <a style="text-decoration: none; color: #51ff0d;" href="{{ route('chat', $message->id) }}">
         <div class="message">
             <p>{{ $message->created_at }}</p>
             <div class="content-message">
@@ -11,5 +11,4 @@
             </div>
         </div>
     </a>
-    <br>
 @endforeach
