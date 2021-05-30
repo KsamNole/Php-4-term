@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -22,7 +23,7 @@
     position: sticky;
     top: 0;
     min-height: 100vh;
-    background-image: url(/imgs/tenor.gif);
+    background-image: url('/imgs/tenor.gif');
 }
 
 .containers-header {
@@ -56,9 +57,120 @@
     justify-items: center;
 }
 
+.background-morph-img {
+    position: relative;
+    width: 100%;
+}
+
+.morh-signin {
+    position: absolute;
+    bottom: 13%;
+    left: 23%;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    border: 2px solid darkcyan;
+    background-color: blue;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.morh-signup {
+    position: absolute;
+    bottom: 13%;
+    right: 23%;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    border: 2px solid darkgoldenrod;
+    background-color: red;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
 .btn-huge {
     grid-row: span 2;
     grid-column: span 2;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    padding: 0 100px 0 100px;
+}
+
+.profile_img {
+    border: 5px solid #718096;
+}
+
+.posts {
+    padding-left: 90px;
+}
+
+.post {
+    border: 1px solid #4a5568;
+}
+
+.text-area-post {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: black;
+    resize: none;
+    color: #51ff0d;
+}
+
+.send-message {
+    display: grid;
+    justify-content: center;
+}
+
+.text-area-message {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: black;
+    resize: none;
+    color: #51ff0d;
+}
+
+.input-comment {
+    width: 100%;
+    height: 30px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background-color: black;
+    resize: none;
+    color: #51ff0d;
+}
+
+.messages{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.content-message {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    border: 2px solid white;
+}
+
+.img-message{
+    height: 100px;
+    width: 100px;
+    border-right: 2px solid white;
+}
+
+.text-message{
+    padding: 10px;
 }
 
 header {

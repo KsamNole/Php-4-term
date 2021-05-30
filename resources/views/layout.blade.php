@@ -7,20 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Social Paradise</title>
-    <link rel="shortcut icon" href="/imgs/logo.jpg">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" href="{{ url('imgs/logo.jpg') }}">
+    <link rel="stylesheet" href="{{ url('css/app.css') }}">
 </head>
 <body>
 <header>
     <ul class="containers-header">
-        <img src="imgs/logo.jpg" style="width: 20px; height: 20px; padding-left: 5px;">
+        <img src="{{ url('imgs/logo.jpg') }}" style="width: 20px; height: 20px; padding-left: 5px;">
         <div class="header-btns-main">
             <a href="{{ route('home') }}">Главная</a>
-            <a href="">Профиль</a>
+            <a href="{{ route('profile') }}">Профиль</a>
+            <a href="{{ route('messages') }}">Сообщения</a>
         </div>
         <div class="header-btns-log">
+            @if (Auth::check())
+            <a href="{{ route('auth.logout') }}">Выйти</a>
+            @else
+            <a href="{{ route('auth.signin') }}">Войти</a>
             <a href="{{ route('auth.signup') }}">Зарегистрироваться</a>
-            <a href="">Выйти</a>
+            @endif
         </div>
     </ul>
 </header>
@@ -42,6 +47,5 @@
         <div class="container-img"></div>
     </div>
 </main>
-
 </body>
 </html>
