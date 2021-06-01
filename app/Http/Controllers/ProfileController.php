@@ -39,4 +39,17 @@ class ProfileController extends Controller
 
         return back();
     }
+
+    function deletePage(Request $req){
+        $username = $req->name;
+        $user_to_delete = User::where('username', $username)->first();
+        $auth_user = User::where('username', Auth::user()->getUsername())->first();
+
+        if ($auth_user->username == $username ||  $auth_user->role == 1)
+        {
+            $user_to_delete->delete();
+        }
+        return view("home");
+    }
 }
+

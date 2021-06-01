@@ -26,6 +26,33 @@ class PostController extends Controller
         return back();
     }
 
+    function deletePost(Request $req)
+    {
+        $post_id = $req->post_id;
+        $post = Post::all()->find($post_id);
+        $user = User::where('username', Auth::user()->getUsername())->first();
+
+        if ($post->author == $user->username || $user->role == 1)
+        {
+            $post->delete();
+        }
+        return back();
+    }
+
+    function deleteComment(Request $req)
+    {
+        $comment_id = $req->c_id;
+        $comment = Comment::all()->find($comment_id);
+        $post = Post::all()->find($comment->id_post);
+        $user = User::where('username', Auth::user()->getUsername())->first();
+
+        if ($comment->author == $user->username || $user->role == 1 || $post->author == $user->username)
+        {
+            $comment->delete();
+        }
+        return back();
+    }
+
     function addComment(Request $req)
     {
         $this->validate($req, [

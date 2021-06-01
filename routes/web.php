@@ -32,6 +32,12 @@ Route::post('/profile/add-post', [\App\Http\Controllers\PostController::class, '
 Route::post('/profile/add-comment', [\App\Http\Controllers\PostController::class, 'addComment'])
     ->middleware('auth')->name('addComment');
 
+Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost']);
+
+Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment']);
+
+Route::get('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage']);
+
 /* Авторизация */
 
 Route::get('/signup', [\App\Http\Controllers\AuthController::class, 'getSignup'])
