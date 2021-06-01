@@ -55,10 +55,6 @@ class PostController extends Controller
 
     function addComment(Request $req)
     {
-        $this->validate($req, [
-            'text' => 'required|min:5'
-        ]);
-
         $comment = new Comment();
         $comment->text = $req->input('text');
         $comment->author = Auth::user()->getUsername();

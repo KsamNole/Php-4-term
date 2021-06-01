@@ -17,8 +17,12 @@ Route::post('/profile/add-message', [\App\Http\Controllers\ProfileController::cl
     ->middleware('auth')->name('sendMessage');
 Route::get('/messages', [\App\Http\Controllers\ProfileController::class, 'getMessages'])
     ->middleware('auth')->name('messages');
+Route::get('/messages/{id}', [\App\Http\Controllers\ProfileController::class, 'chat'])
+    ->middleware('auth')->name('chat');
 Route::get('/update-msg', [\App\Http\Controllers\ProfileController::class, 'updateMessages'])
     ->middleware('auth')->name('update-msg');
+Route::get('/update-chat/{id}', [\App\Http\Controllers\ProfileController::class, 'updateChat'])
+    ->middleware('auth')->name('update-chat');
 
 /* Посты */
 
