@@ -5,7 +5,7 @@
         <div>
             @include('particles.profile_info')
             <br>
-            @include('particles.send_message')
+            <p style="text-align: center; "><a style="text-decoration: none; color: white;" href="{{ route('chat', $user->getUsername()) }}">Отправить сообщение</a></p>
         </div>
         <div class="posts">
             @include('particles.posts')

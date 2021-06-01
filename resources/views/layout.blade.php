@@ -9,6 +9,7 @@
     <title>Social Paradise</title>
     <link rel="shortcut icon" href="{{ url('imgs/logo.jpg') }}">
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 <body>
 <header>

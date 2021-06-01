@@ -19,7 +19,7 @@
     grid-column: span;
 }
 
-.container-img{
+.container-img {
     position: sticky;
     top: 0;
     min-height: 100vh;
@@ -95,14 +95,32 @@
     grid-column: span 2;
 }
 
+/* Профиль */
+
 .profile {
     display: grid;
     grid-template-columns: 210px 1fr;
     padding: 0 100px 0 100px;
 }
 
+.delete-profile {
+    color: indianred;
+    text-decoration: none;
+}
+
+.delete-profile:hover {
+    color: red;
+}
+
 .profile_img {
     border: 5px solid #718096;
+}
+
+/* Посты */
+
+.time-delete-post {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .posts {
@@ -152,7 +170,7 @@
     color: #51ff0d;
 }
 
-.messages{
+.messages {
     padding-left: 20%;
     padding-right: 20%;
 }
@@ -163,13 +181,13 @@
     border: 2px solid white;
 }
 
-.img-message{
+.img-message {
     height: 50px;
     width: 50px;
     border-right: 2px solid white;
 }
 
-.text-message{
+.text-message {
     padding: 5px;
     white-space: nowrap;
     overflow: hidden;
@@ -188,16 +206,16 @@
     border: 2px solid white;
 }
 
-.chat-messages{
+.chat-messages {
     height: 525px;
     overflow: auto;
 }
 
-.chat-messages::-webkit-scrollbar{
+.chat-messages::-webkit-scrollbar {
     width: 0;
 }
 
-.chat-profile{
+.chat-profile {
     height: 75px;
     display: grid;
     grid-template-columns: 75px 1fr;
@@ -255,6 +273,20 @@ body {
 
 .is-invalid {
     border: 1px red solid;
+}
+
+.delete {
+    color: indianred;
+    text-decoration: none;
+    opacity: 0.5;
+}
+
+.delete:hover {
+    color: red;
+}
+
+.post:hover .delete {
+    opacity: 1;
 }
 
 
