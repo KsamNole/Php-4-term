@@ -22,13 +22,6 @@
                 <input class="input-comment" type="text" id="text" name="text">
                 <input type="hidden" id="id_post" name="id_post" value="{{ $post->id }}">
             </form>
-            <script>
-                document.getElementById('addСomment').addEventListener('keydown', function (e) {
-                    if (e.keyCode == 13) {
-                        this.submit();
-                    }
-                })
-            </script>
             @foreach($comments as $comment)
                 @if($comment->id_post == $post->id)
                     <div class="comment">
@@ -50,3 +43,10 @@
         <br>
     @endif
 @endforeach
+<script>
+    document.getElementById('addСomment').addEventListener('keydown', function (e) {
+        if (e.key == 'Enter') {
+            this.submit();
+        }
+    })
+</script>
