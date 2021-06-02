@@ -1842,6 +1842,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./keyDownHandler */ "./resources/js/keyDownHandler.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1872,6 +1874,24 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/keyDownHandler.js":
+/*!****************************************!*\
+  !*** ./resources/js/keyDownHandler.js ***!
+  \****************************************/
+/***/ (() => {
+
+var el = document.getElementById('keyDown');
+
+if (el) {
+  el.addEventListener('keydown', function (e) {
+    if (e.key == 'Enter') {
+      this.submit();
+    }
+  });
+}
 
 /***/ }),
 

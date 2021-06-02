@@ -5,40 +5,17 @@
         @include('particles.profile_info')
         <div class="posts">
             <div class="add_post">
-                <form onsubmit="return addPost();">
+                <form action="javascript:addPost()" id="keyDown">
                     @csrf
-                    <textarea class="text-area-post" name="text" id="text"></textarea>
-                    <button type="submit">Отправить</button>
+                    <textarea class="text-area-post" name="text_post" id="text_post"></textarea>
                 </form>
             </div>
             <br>
             <div id="display-posts">
-                @include('particles.posts')
+                @include('update-posts')
             </div>
-            <script type="text/javascript">
-                function addPost() {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        type: 'POST',
-                        url: '{{ route('addPost') }}',
-                        data: {
-                            'text': document.getElementById('text').value
-                        }
-                    });
-                    $.ajax({
-                        url: '{{ route('update-posts') }}',
-                        success: function (data) {
-                            $('#display-posts').html(data);
-                        }
-                    });
-                    document.getElementById('text').value = "";
-                    return false;
-                }
-            </script>
         </div>
     </div>
+    @include('scripts.addPost')
 @endsection
+

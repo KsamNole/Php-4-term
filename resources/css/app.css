@@ -125,10 +125,18 @@
 
 .posts {
     padding-left: 90px;
+    max-width: 650px;
 }
 
 .post {
     border: 1px solid #4a5568;
+}
+
+.post-text {
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    padding: 0 0 0 5px;
+    font-size: 20px;
 }
 
 .text-area-post {
@@ -168,6 +176,13 @@
     background-color: black;
     resize: none;
     color: #51ff0d;
+}
+
+.comment-text {
+    padding: 0 0 0 20px;
+    font-size: 15px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 .messages {

@@ -28,13 +28,6 @@ class ProfileController extends Controller
         return view('messages', ['messages' => $messages]);
     }
 
-    public function updateMessages()
-    {
-        $messages = Message::all()->where('to_user', Auth::user()->getUsername())
-            ->sortBy('created_at')->reverse()->unique('from_user');
-        return view('update-msg', ['messages' => $messages]);
-    }
-
     public function sendMessage(Request $req)
     {
         $message = new Message();
@@ -44,6 +37,24 @@ class ProfileController extends Controller
         $message->save();
     }
 
+    public function updateMessages()
+    {
+        $messages = Message::all()->where('to_user', Auth::user()->getUsername())
+            ->sortBy('created_at')->reverse()->unique('from_user');
+        return view('update-msg', ['messages' => $messages]);
+    }
+
+    public function chat($username)
+    {
+        $all_mes = $this->_getMessages($username);
+        return view('chat', ['to_user' => $username, 'messages' => $all_mes]);
+    }
+
+    public function updateChat($username)
+    {
+        $all_mes = $this->_getMessages($username);
+        return view('update-chat', ['to_user' => $username, 'messages' => $all_mes]);
+    }
 
     function deletePage(Request $req)
     {
@@ -58,20 +69,16 @@ class ProfileController extends Controller
         return back();
     }
 
-    public function chat($username)
+    /**
+     * @param $username
+     * @return Message[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function _getMessages($username)
     {
         $to_mes = Message::all()->where('to_user', $username)->where('from_user', Auth::user()->getUsername());
         $from_mes = Message::all()->where('to_user', Auth::user()->getUsername())->where('from_user', $username);
         $all_mes = $from_mes->merge($to_mes)->sortBy('created_at');
-        return view('chat', ['to_user'=> $username, 'messages'=> $all_mes]);
-    }
-
-    public function updateChat($username)
-    {
-        $to_mes = Message::all()->where('to_user', $username)->where('from_user', Auth::user()->getUsername());
-        $from_mes = Message::all()->where('to_user', Auth::user()->getUsername())->where('from_user', $username);
-        $all_mes = $from_mes->merge($to_mes)->sortBy('created_at');
-        return view('update-chat', ['to_user'=> $username, 'messages'=> $all_mes]);
+        return $all_mes;
     }
 }
 

@@ -47,6 +47,7 @@
         </div>
         <div class="container-img"></div>
     </div>
+    <script type="text/javascript" src="{{ url('js/app.js') }}"></script>
 </main>
 </body>
 </html>

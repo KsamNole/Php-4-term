@@ -26,9 +26,9 @@ Route::get('/update-chat/{username}', [\App\Http\Controllers\ProfileController::
 
 /* Посты */
 
-Route::get('/user/like/{id}', [\App\Http\Controllers\PostController::class, 'like'])
+Route::get('/post/like', [\App\Http\Controllers\PostController::class, 'like'])
     ->middleware('auth')->name('like');
-Route::get('/user/dislike/{id}', [\App\Http\Controllers\PostController::class, 'dislike'])
+Route::get('/post/dislike', [\App\Http\Controllers\PostController::class, 'dislike'])
     ->middleware('auth')->name('dislike');
 
 Route::post('/profile/add-post', [\App\Http\Controllers\PostController::class, 'addPost'])
