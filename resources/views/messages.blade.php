@@ -4,7 +4,6 @@
     <div class="messages" id="display-msg">
         @include('update-msg')
     </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript">
         function mode() {
             $.ajax({
@@ -14,6 +13,6 @@
                 }
             });
         }
-        setInterval(mode, 3000);
+        setInterval(mode, 1000);
     </script>
 @endsection

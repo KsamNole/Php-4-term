@@ -14,16 +14,10 @@ class PostController extends Controller
 {
     function addPost(Request $req)
     {
-        $this->validate($req, [
-            'text' => 'required|min:5'
-        ]);
-
         $post = new Post();
         $post->text = $req->input('text');
         $post->author = Auth::user()->getUsername();
         $post->save();
-
-        return back();
     }
 
     function deletePost(Request $req)
@@ -112,5 +106,10 @@ class PostController extends Controller
             $post->save();
         }
         return back();
+    }
+
+    function updatePosts() {
+        $user = Auth::user();
+        return view('particles.posts', ['user' => $user, 'posts' => Post::all()->reverse(), 'comments' => Comment::all()]);
     }
 }

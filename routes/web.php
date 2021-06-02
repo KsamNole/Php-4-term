@@ -17,11 +17,11 @@ Route::post('/profile/add-message', [\App\Http\Controllers\ProfileController::cl
     ->middleware('auth')->name('sendMessage');
 Route::get('/messages', [\App\Http\Controllers\ProfileController::class, 'getMessages'])
     ->middleware('auth')->name('messages');
-Route::get('/messages/{id}', [\App\Http\Controllers\ProfileController::class, 'chat'])
+Route::get('/messages/{username}', [\App\Http\Controllers\ProfileController::class, 'chat'])
     ->middleware('auth')->name('chat');
 Route::get('/update-msg', [\App\Http\Controllers\ProfileController::class, 'updateMessages'])
     ->middleware('auth')->name('update-msg');
-Route::get('/update-chat/{id}', [\App\Http\Controllers\ProfileController::class, 'updateChat'])
+Route::get('/update-chat/{username}', [\App\Http\Controllers\ProfileController::class, 'updateChat'])
     ->middleware('auth')->name('update-chat');
 
 /* Посты */
@@ -36,11 +36,16 @@ Route::post('/profile/add-post', [\App\Http\Controllers\PostController::class, '
 Route::post('/profile/add-comment', [\App\Http\Controllers\PostController::class, 'addComment'])
     ->middleware('auth')->name('addComment');
 
-Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost']);
+Route::get('/update-posts', [\App\Http\Controllers\PostController::class, 'updatePosts'])
+    ->middleware('auth')->name('update-posts');
 
-Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment']);
+/* Удаление постов, комментариев, страниц */
 
-Route::get('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage']);
+Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost'])->middleware('auth');
+
+Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment'])->middleware('auth');
+
+Route::get('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])->middleware('auth');
 
 /* Авторизация */
 

@@ -18,12 +18,14 @@ class AuthController extends Controller
             'password' => 'required|unique:users|min:6'
             ]);
 
-        User::create([
+        $user = User::create([
             'username' => $req->input('username'),
             'password' => bcrypt($req->input('password'))
         ]);
 
-        return redirect()->route('home');
+        Auth::login($user);
+
+        return redirect()->route('profile');
     }
 
     public function getSignin() {
