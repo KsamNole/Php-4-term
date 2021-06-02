@@ -56,3 +56,6 @@ Route::post('/signin', [\App\Http\Controllers\AuthController::class, 'postSignin
 
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])
     ->middleware('auth')->name('auth.logout');
+
+Route::post("/image-upload", [\App\Http\Controllers\UploadController::class, 'upload'])->name("image.upload");
+Route::get("/upload-page", [\App\Http\Controllers\UploadController::class, 'page'])->name("upload.page");

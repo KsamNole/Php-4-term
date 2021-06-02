@@ -103,6 +103,8 @@
 
 .profile_img {
     border: 5px solid #718096;
+    width: 200px;
+    height: 200px;
 }
 
 .posts {
