@@ -33,7 +33,7 @@ class PostController extends Controller
 
     function deletePost(Request $req)
     {
-        $post_id = $req->post_id;
+        $post_id = $req->input('post_id');
         $post = Post::all()->find($post_id);
         $user = User::where('username', Auth::user()->getUsername())->first();
 
@@ -55,7 +55,7 @@ class PostController extends Controller
 
     function deleteComment(Request $req)
     {
-        $comment_id = $req->c_id;
+        $comment_id = $req->input('c_id');
         $comment = Comment::all()->find($comment_id);
         $post = Post::all()->find($comment->id_post);
         $user = User::where('username', Auth::user()->getUsername())->first();

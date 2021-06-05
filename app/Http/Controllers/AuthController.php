@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function postSignup(Request $req) {
         $this->validate($req, [
-            'username' => 'required|unique:users|alpha_dash|max:20',
+            'username' => 'required|unique:users',
             'password' => 'required|unique:users|min:6'
             ]);
 
