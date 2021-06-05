@@ -34,8 +34,8 @@ class AuthController extends Controller
 
     public function postSignin(Request $req) {
         $this->validate($req, [
-            'username' => 'required|alpha_dash|max:20',
-            'password' => 'required|min:6'
+            'username' => 'required',
+            'password' => 'required'
         ]);
 
         if (!Auth::attempt($req->only(['username', 'password']))){

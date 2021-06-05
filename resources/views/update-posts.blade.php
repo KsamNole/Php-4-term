@@ -11,24 +11,18 @@
                 </p>
                 @endif
             </div>
-            <p style="padding: 0 0 0 5px; font-size: 20px;">{{ $post->text }}</p>
+            <p class="post-text">{{ $post->text }}</p>
             <p style="padding: 0 10px 5px 5px; text-align: right; color: white;">
-                <a style="text-decoration: none; color: white;" href="{{ route('like', $post->id) }}">1: {{ $post->likes }}</a>
-                <a style="text-decoration: none; color: white;" href="{{ route('dislike', $post->id) }}">/ 0: {{ $post->dislikes }}</a>
+                <a style="text-decoration: none; color: white;" href="javascript:like({{ $post->id }})">1: {{ $post->likes }}</a>
+                <a style="text-decoration: none; color: white;" href="javascript:dislike({{ $post->id }})">/ 0: {{ $post->dislikes }}</a>
             </p>
+            @include('scripts.like-dislike')
             <hr size="1px;">
-            <form method="POST" action="{{ route('addComment') }}" id="addСomment">
+            <form action="javascript:addComment({{ $post->id }})" id="keyDown">
                 @csrf
-                <input class="input-comment" type="text" id="text" name="text">
-                <input type="hidden" id="id_post" name="id_post" value="{{ $post->id }}">
+                <input class="input-comment" type="text" id="comment-{{ $post->id }}">
             </form>
-            <script>
-                document.getElementById('addСomment').addEventListener('keydown', function (e) {
-                    if (e.keyCode == 13) {
-                        this.submit();
-                    }
-                })
-            </script>
+            @include('scripts.addComment')
             @foreach($comments as $comment)
                 @if($comment->id_post == $post->id)
                     <div class="comment">
@@ -42,7 +36,7 @@
                             </p>
                             @endif
                         </div>
-                        <p style="padding: 0 0 0 20px; font-size: 15px;">{{ $comment->text }}</p>
+                        <p class="comment-text">{{ $comment->text }}</p>
                     </div>
                 @endif
             @endforeach

@@ -26,9 +26,9 @@ Route::get('/update-chat/{username}', [\App\Http\Controllers\ProfileController::
 
 /* Посты */
 
-Route::get('/user/like/{id}', [\App\Http\Controllers\PostController::class, 'like'])
+Route::get('/post/like', [\App\Http\Controllers\PostController::class, 'like'])
     ->middleware('auth')->name('like');
-Route::get('/user/dislike/{id}', [\App\Http\Controllers\PostController::class, 'dislike'])
+Route::get('/post/dislike', [\App\Http\Controllers\PostController::class, 'dislike'])
     ->middleware('auth')->name('dislike');
 
 Route::post('/profile/add-post', [\App\Http\Controllers\PostController::class, 'addPost'])
@@ -41,11 +41,18 @@ Route::get('/update-posts', [\App\Http\Controllers\PostController::class, 'updat
 
 /* Удаление постов, комментариев, страниц */
 
-Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost'])->middleware('auth');
+Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost'])
+    ->middleware('auth');
 
-Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment'])->middleware('auth');
+Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment'])
+    ->middleware('auth');
+
 
 Route::post('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])->middleware('auth');
+
+Route::get('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])
+    ->middleware('auth');
+
 
 /* Авторизация */
 
@@ -62,5 +69,10 @@ Route::post('/signin', [\App\Http\Controllers\AuthController::class, 'postSignin
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])
     ->middleware('auth')->name('auth.logout');
 
-Route::post("/image-upload", [\App\Http\Controllers\UploadController::class, 'upload'])->name("image.upload");
-Route::get("/upload-page", [\App\Http\Controllers\UploadController::class, 'page'])->name("upload.page");
+/* Загрузка фото профиля */
+
+Route::post("/image-upload", [\App\Http\Controllers\UploadController::class, 'upload'])
+    ->middleware('auth')->name("image.upload");
+
+Route::get("/upload-page", [\App\Http\Controllers\UploadController::class, 'page'])
+    ->middleware('auth')->name("upload.page");
