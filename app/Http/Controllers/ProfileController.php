@@ -58,7 +58,7 @@ class ProfileController extends Controller
 
     function deletePage(Request $req)
     {
-        $username = $req->name;
+        $username = $req->input('name');
         $user_to_delete = User::where('username', $username)->first();
         $auth_user = User::where('username', Auth::user()->getUsername())->first();
 
