@@ -45,7 +45,7 @@ Route::get('/profile/delete-post', [\App\Http\Controllers\PostController::class,
 
 Route::get('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment'])->middleware('auth');
 
-Route::get('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])->middleware('auth');
+Route::post('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])->middleware('auth');
 
 /* Авторизация */
 
