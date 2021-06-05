@@ -23,9 +23,9 @@ class ProfileController extends Controller
 
     public function getMessages()
     {
-        $messages = Message::all()->where('to_user', Auth::user()->getUsername())
-            ->sortBy('created_at')->reverse()->unique('from_user');
-        return view('messages', ['messages' => $messages]);
+        $info = [];
+        $info = $this->_getUniqueMessages($info);
+        return view('messages', ['info' => $info]);
     }
 
     public function sendMessage(Request $req)
@@ -39,21 +39,23 @@ class ProfileController extends Controller
 
     public function updateMessages()
     {
-        $messages = Message::all()->where('to_user', Auth::user()->getUsername())
-            ->sortBy('created_at')->reverse()->unique('from_user');
-        return view('update-msg', ['messages' => $messages]);
+        $info = [];
+        $info = $this->_getUniqueMessages($info);
+        return view('update-msg', ['info' => $info]);
     }
 
     public function chat($username)
     {
         $all_mes = $this->_getMessages($username);
-        return view('chat', ['to_user' => $username, 'messages' => $all_mes]);
+        $to_user = User::where('username', $username)->first();
+        return view('chat', ['to_user' => $to_user, 'messages' => $all_mes]);
     }
 
     public function updateChat($username)
     {
         $all_mes = $this->_getMessages($username);
-        return view('update-chat', ['to_user' => $username, 'messages' => $all_mes]);
+        $to_user = User::where('username', $username)->first();
+        return view('update-chat', ['to_user' => $to_user, 'messages' => $all_mes]);
     }
 
     function deletePage(Request $req)
@@ -79,6 +81,20 @@ class ProfileController extends Controller
         $from_mes = Message::all()->where('to_user', Auth::user()->getUsername())->where('from_user', $username);
         $all_mes = $from_mes->merge($to_mes)->sortBy('created_at');
         return $all_mes;
+    }
+
+    /**
+     * @param array $info
+     * @return array
+     */
+    public function _getUniqueMessages(array $info): array
+    {
+        $messages = Message::all()->where('to_user', Auth::user()->getUsername())
+            ->sortBy('created_at')->reverse()->unique('from_user');
+        foreach ($messages as $message) {
+            $info[] = ['message' => $message, 'user' => User::where('username', $message->from_user)->first()];
+        }
+        return $info;
     }
 }
 

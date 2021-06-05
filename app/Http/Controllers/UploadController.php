@@ -14,7 +14,7 @@ class UploadController extends Controller
 
         $user = User::where('username', Auth::user()->getUsername())->first();
 
-        if ($user->avatar != null){
+        if ($user->avatar != 'app/public/default_photo_profile.jpg'){
             Storage::disk('public')->delete($user->avatar);
         }
         $user->avatar = $path;

@@ -1,6 +1,6 @@
 <div class="profile_info">
     <a href="@if(Auth::check() && Auth::user()->getUsername() == $user->getUsername()){{route('upload.page')}}@endif">
-        <img class="profile_img" src="@if($user->avatar){{ asset('/storage/' . $user->avatar) }}@else{{url('imgs/default_photo_profile.jpg')}}@endif" alt="profile_img">
+        <img class="profile_img" src="{{ asset('/storage/' . $user->avatar) }}" alt="profile_img">
     </a>
     <br>
     <h2 style="text-align: center;">{{ $user->getUsername() }}</h2>
