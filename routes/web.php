@@ -42,12 +42,17 @@ Route::get('/update-posts', [\App\Http\Controllers\PostController::class, 'updat
 /* Удаление постов, комментариев, страниц */
 
 Route::post('/profile/delete-post', [\App\Http\Controllers\PostController::class, 'deletePost'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->name('delete.post');
 
 Route::post('/profile/delete-comment', [\App\Http\Controllers\PostController::class, 'deleteComment'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->name('delete.comment');
 
-Route::post('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])->middleware('auth');
+Route::post('/profile/delete-page', [\App\Http\Controllers\ProfileController::class, 'deletePage'])
+    ->middleware('auth')
+    ->middleware('request')
+    ->name('delete.page');
 
 
 /* Авторизация */

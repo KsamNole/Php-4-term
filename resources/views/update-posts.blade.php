@@ -4,6 +4,11 @@
             <div class="time-delete-post">
                 <p style="padding: 5px 0 0 5px; color: white;">{{ $post->created_at }}</p>
                 @if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->getUsername() == $user->getUsername()))
+                    <form method="POST" action="{{route('delete.post')}}">
+                        @csrf
+                        <input type="hidden" value="{{$post->id}}" name="post_id">
+                        <button type="submit">Удалить пост</button>
+                    </form>
                 <p style="text-align: right; padding-right: 10px;">
                     <a class="delete" href="/profile/delete-post?post_id={{$post->id}}">
                         <img style="width: 10px; height: 10px;" src="{{ url('imgs/delete.png') }}">
@@ -29,6 +34,11 @@
                         <div class="time-delete-post">
                             <p style="padding: 5px 0 0 15px; color: white;">{{ $comment->author }}</p>
                             @if (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->getUsername() == $user->getUsername()))
+                                <form method="POST" action="{{route('delete.comment')}}">
+                                    @csrf
+                                    <input type="hidden" value="{{$comment->id}}" name="c_id">
+                                    <button type="submit">Удалить коммент</button>
+                                </form>
                             <p style="text-align: right; padding-right: 10px;">
                                 <a class="delete" href="/profile/delete-comment?c_id={{$comment->id}}">
                                     <img style="width: 10px; height: 10px;" src="{{ url('imgs/delete.png') }}">
