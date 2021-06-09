@@ -13,7 +13,7 @@
             }
         });
         $.ajax({
-            url: '{{ route('update-posts') }}',
+            url: '{{ route('update-posts', $user->getUsername()) }}',
             success: function (data) {
                 $('#display-posts').html(data);
             }

@@ -20,13 +20,11 @@
                 <a style="text-decoration: none; color: white;" href="javascript:like({{ $post->id }})">1: {{ $post->likes }}</a>
                 <a style="text-decoration: none; color: white;" href="javascript:dislike({{ $post->id }})">/ 0: {{ $post->dislikes }}</a>
             </p>
-            @include('scripts.like-dislike')
             <hr size="1px;">
-            <form action="javascript:addComment({{ $post->id }})" id="keyDown">
+            <form action="javascript:addComment({{ $post->id }})">
                 @csrf
                 <input class="input-comment" type="text" id="comment-{{ $post->id }}">
             </form>
-            @include('scripts.addComment')
             @foreach($comments as $comment)
                 @if($comment->id_post == $post->id)
                     <div class="comment">
@@ -52,3 +50,5 @@
         <br>
     @endif
 @endforeach
+@include('scripts.like-dislike')
+@include('scripts.addComment')

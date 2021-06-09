@@ -26,8 +26,8 @@ class PostController extends Controller
         $post->save();
     }
 
-    function updatePosts() {
-        $user = Auth::user();
+    function updatePosts($username) {
+        $user = User::where('username', $username)->first();
         return view('update-posts', ['user' => $user, 'posts' => Post::all()->reverse(), 'comments' => Comment::all()]);
     }
 
