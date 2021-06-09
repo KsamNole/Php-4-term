@@ -106,4 +106,8 @@ class PostController extends Controller
             $post->save();
         }
     }
+
+    public function test(Request $req){
+        dd(Auth::user()->likedPosts);
+    }
 }

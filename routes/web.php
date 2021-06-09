@@ -77,3 +77,5 @@ Route::post("/image-upload", [\App\Http\Controllers\UploadController::class, 'up
 
 Route::get("/upload-page", [\App\Http\Controllers\UploadController::class, 'page'])
     ->middleware('auth')->name("upload.page");
+
+Route::get('/test', [\App\Http\Controllers\PostController::class, "test"]);
