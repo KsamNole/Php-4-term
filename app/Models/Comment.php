@@ -10,4 +10,9 @@ class Comment extends Model
     protected $table = 'table_comments';
 
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'author', 'username');
+    }
 }

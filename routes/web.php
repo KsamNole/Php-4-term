@@ -36,7 +36,7 @@ Route::post('/profile/add-post', [\App\Http\Controllers\PostController::class, '
 Route::post('/profile/add-comment', [\App\Http\Controllers\PostController::class, 'addComment'])
     ->middleware('auth')->name('addComment');
 
-Route::get('/update-posts', [\App\Http\Controllers\PostController::class, 'updatePosts'])
+Route::get('/update-posts/{username}', [\App\Http\Controllers\PostController::class, 'updatePosts'])
     ->middleware('auth')->name('update-posts');
 
 /* Удаление постов, комментариев, страниц */
@@ -77,3 +77,16 @@ Route::post("/image-upload", [\App\Http\Controllers\UploadController::class, 'up
 
 Route::get("/upload-page", [\App\Http\Controllers\UploadController::class, 'page'])
     ->middleware('auth')->name("upload.page");
+
+/* Тесты */
+Route::get('/test', [\App\Http\Controllers\PostController::class, 'test']);
+
+//Route::middleware(['auth'])->group(function () {
+//    Route::get('/', function () {
+//        // ...
+//    });
+//
+//    Route::get('user/profile', function () {
+//        // ...
+//    });
+//});

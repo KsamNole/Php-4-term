@@ -26,8 +26,8 @@ class PostController extends Controller
         $post->save();
     }
 
-    function updatePosts() {
-        $user = Auth::user();
+    function updatePosts($username) {
+        $user = User::where('username', $username)->first();
         return view('update-posts', ['user' => $user, 'posts' => Post::all()->reverse(), 'comments' => Comment::all()]);
     }
 
@@ -105,5 +105,9 @@ class PostController extends Controller
             $post->dislikes -= 1;
             $post->save();
         }
+    }
+
+    public function test(Request $req){
+        dd(Comment::find(7)->user);
     }
 }

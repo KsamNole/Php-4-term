@@ -5,7 +5,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        console.log(id)
         $.ajax({
             type: 'POST',
             url: '{{ route('addComment') }}',
@@ -15,7 +14,7 @@
             }
         });
         $.ajax({
-            url: '{{ route('update-posts') }}',
+            url: '{{ route('update-posts', $user->getUsername()) }}',
             success: function (data) {
                 $('#display-posts').html(data);
             }
