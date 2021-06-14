@@ -1,4 +1,4 @@
-@foreach($user->getPosts as $post)
+@foreach($user->getPosts->reverse() as $post)
     <div class="post">
         <form method="POST" action="{{route('delete.post')}}" id="deletePost-{{$post->id}}">
             @csrf

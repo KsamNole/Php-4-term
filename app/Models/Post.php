@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $table = 'table_posts';
-    protected $dateFormat = 'U';
+
     use HasFactory;
 
     public function user(){
