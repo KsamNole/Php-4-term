@@ -108,6 +108,6 @@ class PostController extends Controller
     }
 
     public function test(Request $req){
-        dd(Auth::user()->likedPosts);
+
     }
 }

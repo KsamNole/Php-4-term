@@ -55,6 +55,7 @@ class User extends Authenticatable
         return "{$this->role}";
     }
 
+
     public function likedPosts()
     {
         return $this->hasManyThrough('App\Models\Post', "App\Models\Like", "user", "id",
@@ -64,5 +65,9 @@ class User extends Authenticatable
     public function getPosts()
     {
         return $this->hasMany("App\Models\Post", "author", "username");
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment', 'author', 'username');
     }
 }
