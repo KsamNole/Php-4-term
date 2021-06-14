@@ -60,4 +60,9 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\Models\Post', "App\Models\Like", "user", "id",
         "username", "id_post");
     }
+
+    public function getPosts()
+    {
+        return $this->hasMany("App\Models\Post", "author", "username");
+    }
 }
