@@ -108,6 +108,6 @@ class PostController extends Controller
     }
 
     public function test(Request $req){
-        dd(Comment::find(7)->user);
+        dd(Post::find(13)->user);
     }
 }

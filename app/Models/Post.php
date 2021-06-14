@@ -10,4 +10,8 @@ class Post extends Model
     protected $table = 'table_posts';
 
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'author', 'username');
+    }
 }
